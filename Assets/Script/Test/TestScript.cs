@@ -29,6 +29,7 @@ public class TestScript : MonoBehaviour {
 
         guiString = url + "\n" + width;
         guiStyle.fontSize = fontSize;
+
     }
 	
 	void Update () {

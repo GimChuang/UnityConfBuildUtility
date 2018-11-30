@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class AppInfo {
+public class AppInfo {
 
-    static AppInfo()
+    public string ProductName;
+    public bool bForceSingleInstance;
+
+    public AppInfo(string _productName, bool _bForceInstance)
     {
-
+        ProductName = _productName;
+        bForceSingleInstance = _bForceInstance;
     }
 }
