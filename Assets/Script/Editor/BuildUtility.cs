@@ -15,13 +15,15 @@ public class BuildUtility {
     static void Build_001()
     {
         ClearConsole();
-
-        AppInfo appInfo = new AppInfo("MyAwesomeGame001", true);
+        
+        string appInfoDataPath = GetSourcePath("Files_001/AppInfo/AppInfoData.json");
+        AppInfo appInfo = new AppInfo(appInfoDataPath, "MyAwesomeGame001", true);
         PlayerSettings.productName = appInfo.ProductName;
         PlayerSettings.forceSingleInstance = appInfo.bForceSingleInstance;
 
         // Build
-        string buildName = "Game_001";
+        //string buildName = "Game_001";
+        string buildName = "Game_001" + "_" + appInfo.buildDate + "_" + appInfo.buildCount;
         string destinationPath = GenerateBuildPath(buildName);
 
         CreateDirectoryForBuild(destinationPath);
@@ -48,12 +50,14 @@ public class BuildUtility {
     {
         ClearConsole();
 
-        AppInfo appInfo = new AppInfo("MyAwesomeGame002", false);
+        string appInfoDataPath = GetSourcePath("Files_002/AppInfo/AppInfoData.json");
+        AppInfo appInfo = new AppInfo(appInfoDataPath, "MyAwesomeGame002", false);
         PlayerSettings.productName = appInfo.ProductName;
         PlayerSettings.forceSingleInstance = appInfo.bForceSingleInstance;
 
         // Build
-        string buildName = "Game_002";
+        //string buildName = "Game_002";
+        string buildName = "Game_002" + "_" + appInfo.buildDate + "_" + appInfo.buildCount;
         string destinationPath = GenerateBuildPath(buildName);
 
         CreateDirectoryForBuild(destinationPath);
