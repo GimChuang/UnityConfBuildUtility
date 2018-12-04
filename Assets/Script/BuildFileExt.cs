@@ -45,7 +45,7 @@ public static class BuildFileExt {
         if(!Directory.Exists(_target.FullName))
         {
             Directory.CreateDirectory(_target.FullName);
-            Debug.LogWarning("Directory Not Exists. Created One!");
+            Debug.LogWarning("Target directory not exists. Created One!");
         }
 
         foreach(FileInfo fileInfo in _source.GetFiles())

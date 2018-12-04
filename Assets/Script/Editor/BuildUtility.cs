@@ -12,7 +12,7 @@ public class BuildUtility {
     static string projectPath = Path.GetDirectoryName(Application.dataPath);
 
     [MenuItem("BuildUtility/Build_001")]
-    static void Build_001()
+    public static void Build_001()
     {
         ClearConsole();
         
@@ -45,19 +45,21 @@ public class BuildUtility {
 
     }
 
-    [MenuItem("BuildUtility/Build_002")]
-    static void Build_002()
+    
+    public static void Build_002(AppInfo _appInfo)
     {
+        /*
         ClearConsole();
 
         string appInfoDataPath = GetSourcePath("Files_002/AppInfo/AppInfoData.json");
         AppInfo appInfo = new AppInfo(appInfoDataPath, "MyAwesomeGame002", false);
         PlayerSettings.productName = appInfo.ProductName;
         PlayerSettings.forceSingleInstance = appInfo.bForceSingleInstance;
+        */
 
         // Build
         //string buildName = "Game_002";
-        string buildName = "Game_002" + "_" + appInfo.buildDate + "_" + appInfo.buildCount;
+        string buildName = "Game_002" + "_" + _appInfo.buildDate + "_" + _appInfo.buildCount;
         string destinationPath = GenerateBuildPath(buildName);
 
         CreateDirectoryForBuild(destinationPath);
@@ -76,6 +78,21 @@ public class BuildUtility {
         string sourcePath = GetSourcePath("Files_002");
         DirectoryInfo sourceDir = new DirectoryInfo(sourcePath);
         BuildFileExt.CopyAllTo(sourceDir, targetDir);
+
+    }
+
+    [MenuItem("BuildUtility/Build_002_Load")]
+    public static void LoadAppInfo_Build_002()
+    {
+        ClearConsole();
+
+        string appInfoDataPath = GetSourcePath("Files_002/AppInfo/AppInfoData.json");
+        AppInfo appInfo = new AppInfo(appInfoDataPath, "MyAwesomeGame002", false);
+        PlayerSettings.productName = appInfo.ProductName;
+        PlayerSettings.forceSingleInstance = appInfo.bForceSingleInstance;
+
+        // Open the build tool window
+        BuildToolWindow.Instance.Init(appInfo.buildDate + "_" + appInfo.buildCount, appInfo);
 
     }
 
