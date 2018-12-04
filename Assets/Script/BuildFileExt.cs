@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Text;
+using System.Linq;
 
 public static class BuildFileExt {
 
@@ -48,7 +50,7 @@ public static class BuildFileExt {
             Debug.LogWarning("Target directory not exists. Created One!");
         }
 
-        foreach(FileInfo fileInfo in _source.GetFiles())
+        foreach(FileInfo fileInfo in _source.GetFiles("*", SearchOption.AllDirectories))
         {
             fileInfo.CopyTo(Path.Combine(_target.FullName, fileInfo.Name), true);
         }
@@ -68,5 +70,25 @@ public static class BuildFileExt {
         {
             file.IsReadOnly = false;
         }
+    }
+
+    public static void EditChangelog(string _filePath, string _newString)
+    {
+        if (!File.Exists(_filePath))
+        {
+            Debug.LogError("Changelog file not exists: " + _filePath);
+        }
+
+        StringBuilder builder = new StringBuilder();
+        List<string> originalTexts = File.ReadAllLines(_filePath).ToList();
+
+        builder.AppendLine(_newString);
+
+        for (int i = 0; i < originalTexts.Count; i++)
+        {
+            builder.AppendLine(originalTexts[i]);
+        }
+        File.WriteAllText(_filePath, builder.ToString());
+        Debug.LogWarning("After WriteAllText");
     }
 }

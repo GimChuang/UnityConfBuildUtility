@@ -92,7 +92,7 @@ public class BuildUtility {
         PlayerSettings.forceSingleInstance = appInfo.bForceSingleInstance;
 
         // Open the build tool window
-        BuildToolWindow.Instance.Init(appInfo.buildDate + "_" + appInfo.buildCount, appInfo);
+        BuildToolWindow.Instance.Init(appInfo.buildDate + "_" + appInfo.buildCount, appInfo, GetSourcePath("Files_002/AppInfo/Changelog.txt"));
 
     }
 

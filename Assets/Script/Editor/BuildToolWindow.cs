@@ -7,6 +7,7 @@ public class BuildToolWindow : EditorWindow {
 
     public string changeLogString = "";
     public AppInfo appInfo;
+    string changelogPath;
 
     public static BuildToolWindow Instance
     {
@@ -26,10 +27,11 @@ public class BuildToolWindow : EditorWindow {
         Debug.LogWarning("BuildToolWindow OnDisable Called");
     }
 
-    public void Init(string _buildInfo, AppInfo _appInfo)
+    public void Init(string _changeLogString, AppInfo _appInfo, string _changelogPath)
     {
-        changeLogString = _buildInfo;
+        changeLogString = _changeLogString;
         appInfo = _appInfo;
+        changelogPath = _changelogPath;
     }
 
     void OnGUI()
@@ -39,6 +41,8 @@ public class BuildToolWindow : EditorWindow {
         if (GUILayout.Button("OK"))
         {
             Debug.Log("Pressed! " + changeLogString);
+            BuildFileExt.EditChangelog(changelogPath, changeLogString);
+            Debug.LogWarning("Edit Done?");
             BuildUtility.Build_002(appInfo);
             this.Close();
         }
