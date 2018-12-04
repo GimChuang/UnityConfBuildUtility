@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using System.Text;
 using System.Linq;
+using System;
 
 public static class BuildFileExt {
 
@@ -83,7 +84,6 @@ public static class BuildFileExt {
         List<string> originalTexts = File.ReadAllLines(_filePath).ToList();
       
         builder.AppendLine(_buildDateAndCount);
-        _newString.Replace("\\n", "\n");
         builder.AppendLine(_newString);
 
         builder.AppendLine("==============================================");

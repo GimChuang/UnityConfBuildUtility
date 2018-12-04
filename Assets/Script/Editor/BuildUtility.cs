@@ -48,15 +48,6 @@ public class BuildUtility {
     
     public static void Build_002(AppInfo _appInfo)
     {
-        /*
-        ClearConsole();
-
-        string appInfoDataPath = GetSourcePath("Files_002/AppInfo/AppInfoData.json");
-        AppInfo appInfo = new AppInfo(appInfoDataPath, "MyAwesomeGame002", false);
-        PlayerSettings.productName = appInfo.ProductName;
-        PlayerSettings.forceSingleInstance = appInfo.bForceSingleInstance;
-        */
-
         // Build
         //string buildName = "Game_002";
         string buildName = "Game_002" + "_" + _appInfo.buildDate + "_" + _appInfo.buildCount;

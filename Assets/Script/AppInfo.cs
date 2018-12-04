@@ -19,6 +19,7 @@ public class AppInfo {
     {
         
         currentDateString = string.Format("{0:yyMMdd}", System.DateTime.Now);
+        //currentDateString = System.DateTime.Now.ToString("YYYY-MM-dd");
 
         // Load data from json to set the buildDate and buildCount
         AppInfoData data = LoadAppInfoData(_appInfoDataPath);
