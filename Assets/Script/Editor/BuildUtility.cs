@@ -11,7 +11,7 @@ public class BuildUtility {
     // the string projectPath will be the directory which contains the Assets and ProjectSettings folders
     static string projectPath = Path.GetDirectoryName(Application.dataPath);
 
-    [MenuItem("BuildUtility/Build_001")]
+    //[MenuItem("BuildUtility/Build_001")]
     public static void Build_001()
     {
         ClearConsole();
@@ -92,7 +92,7 @@ public class BuildUtility {
         PlayerSettings.forceSingleInstance = appInfo.bForceSingleInstance;
 
         // Open the build tool window
-        BuildToolWindow.Instance.Init(appInfo.buildDate + "_" + appInfo.buildCount, appInfo, GetSourcePath("Files_002/AppInfo/Changelog.txt"));
+        BuildToolWindow.Instance.Init("", appInfo, GetSourcePath("Files_002/AppInfo/Changelog.txt"));
 
     }
 

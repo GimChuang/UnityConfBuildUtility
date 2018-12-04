@@ -72,7 +72,7 @@ public static class BuildFileExt {
         }
     }
 
-    public static void EditChangelog(string _filePath, string _newString)
+    public static void EditChangelog(string _filePath, string _buildDateAndCount, string _newString)
     {
         if (!File.Exists(_filePath))
         {
@@ -81,13 +81,18 @@ public static class BuildFileExt {
 
         StringBuilder builder = new StringBuilder();
         List<string> originalTexts = File.ReadAllLines(_filePath).ToList();
-
+      
+        builder.AppendLine(_buildDateAndCount);
+        _newString.Replace("\\n", "\n");
         builder.AppendLine(_newString);
+
+        builder.AppendLine("==============================================");
 
         for (int i = 0; i < originalTexts.Count; i++)
         {
             builder.AppendLine(originalTexts[i]);
         }
+
         File.WriteAllText(_filePath, builder.ToString());
         Debug.LogWarning("After WriteAllText");
     }

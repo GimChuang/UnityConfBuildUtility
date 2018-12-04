@@ -5,7 +5,9 @@ using UnityEditor;
 
 public class BuildToolWindow : EditorWindow {
 
-    public string changeLogString = "";
+    [TextArea]
+    public string changeLogString;
+
     public AppInfo appInfo;
     string changelogPath;
 
@@ -36,12 +38,17 @@ public class BuildToolWindow : EditorWindow {
 
     void OnGUI()
     {
+        EditorGUILayout.Space();
         GUILayout.Label("Please Enter Changelog Before Build!");
-        changeLogString = EditorGUILayout.TextField("Changelog", changeLogString);
-        if (GUILayout.Button("OK"))
+        GUILayout.Label(appInfo.buildDate + "_" + appInfo.buildCount, EditorStyles.boldLabel);
+        EditorGUILayout.Space();
+
+        changeLogString = EditorGUILayout.TextArea(changeLogString, GUILayout.MinHeight(200));
+
+        if (GUILayout.Button("Build"))
         {
             Debug.Log("Pressed! " + changeLogString);
-            BuildFileExt.EditChangelog(changelogPath, changeLogString);
+            BuildFileExt.EditChangelog(changelogPath, appInfo.buildDate + "_" + appInfo.buildCount, changeLogString);
             Debug.LogWarning("Edit Done?");
             BuildUtility.Build_002(appInfo);
             this.Close();
