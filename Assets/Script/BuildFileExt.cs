@@ -73,27 +73,30 @@ public static class BuildFileExt {
         }
     }
 
-    public static void EditChangelog(string _filePath, string _buildDateAndCount, string _newString)
+    public static void EditChangelog(string _filePath, string _buildDateAndCount, string _newChangelog)
     {
         if (!File.Exists(_filePath))
         {
             Debug.LogError("Changelog file not exists: " + _filePath);
         }
 
+        // Read old changelog texts
         StringBuilder builder = new StringBuilder();
         List<string> originalTexts = File.ReadAllLines(_filePath).ToList();
       
+        // Add new changelog texts
         builder.AppendLine(_buildDateAndCount);
-        builder.AppendLine(_newString);
+        builder.AppendLine(_newChangelog);
 
         builder.AppendLine("==============================================");
 
+        // Append old changelog texts
         for (int i = 0; i < originalTexts.Count; i++)
         {
             builder.AppendLine(originalTexts[i]);
         }
 
+        // Overwrite the file
         File.WriteAllText(_filePath, builder.ToString());
-        Debug.LogWarning("After WriteAllText");
     }
 }
