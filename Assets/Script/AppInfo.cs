@@ -25,8 +25,8 @@ public static class AppInfo {
         bDisplayResolutionDialog = _bDisplayResolutionDialog;
         bForceSingleInstance = _bForceSingleInstance;
 
-        currentDateString = string.Format("{0:yyMMdd}", System.DateTime.Now);
-        //currentDateString = System.DateTime.Now.ToString("YYYY-MM-dd");
+        //currentDateString = string.Format("{0:yyMMdd}", System.DateTime.Now);
+        currentDateString = System.DateTime.Now.ToString("yyyy-MM-dd");
       
     }
  
