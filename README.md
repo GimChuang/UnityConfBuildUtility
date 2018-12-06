@@ -15,9 +15,7 @@ Features
 
 Exaple of Use Cases
 ---
-As I work in an interactive installation design team, I am often required to have one game run on several computers. Since every computer may has different environment (such as directory path, resolution, webcam device name, etc.), I usually use Json file to edit configuration and game data. And this is what I do:
-1. Copy my application to all computers.
-2. Edit Json file on each computer.
+As I work in an interactive installation design team, I am often required to have one game run on several computers. Since every computer may has different environment (such as directory path, resolution, webcam device name, etc.), I usually use Json file to edit configuration and game data. I used to copy my application to all computers, and then edit Json file on each computer.
 
 However, I sometimes forget to edit the files, or mess up all the builds after I build many 
 new versions due to some changes or quick fixes for the game, when I become flustered in a bustle. So I wrote this utility trying to make my workflow better. 
