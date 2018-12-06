@@ -26,49 +26,13 @@ public class BuildUtility {
         return projectPath + "/FilesToInclude/" + _folderPath + "/AppInfoData.json";
     }
 
-    static string GetChangelogPath(string _folderPath)
+    static string GetChangelogPath()
     {
-        return projectPath + "/FilesToInclude/" + _folderPath + "/Changelog.txt";
+        return projectPath + "/FilesToInclude/General/Changelog.txt";
     }
-
-    //[MenuItem("BuildUtility/Build_001")]
-    /*
-    public static void Build_001()
-    {
-        ClearConsole();
-        
-        string appInfoDataPath = GetIncludePath("Files_001/AppInfo/AppInfoData.json");
-        AppInfo appInfo = new AppInfo(appInfoDataPath, "MyAwesomeGame001", true);
-        PlayerSettings.productName = appInfo.ProductName;
-        PlayerSettings.forceSingleInstance = appInfo.bForceSingleInstance;
-
-        // Build
-        //string buildName = "Game_001";
-        string buildName = "Game_001" + "_" + appInfo.buildDate + "_" + appInfo.buildCount;
-        string destinationPath = GenerateBuildPath(buildName);
-
-        CreateDirectoryForBuild(destinationPath);
-
-        string[] scenes = { "Assets/Scene/MyScene_001.unity" };
-        BuildPipeline.BuildPlayer(scenes, destinationPath + "/" + buildName + ".exe", BuildTarget.StandaloneWindows64, BuildOptions.ShowBuiltPlayer);
-
-        DirectoryInfo targetDir = new DirectoryInfo(destinationPath + "/" + buildName + "_Data" + "/StreamingAssets");
-
-        // Copy general files
-        string sourcePath_general = GetIncludePath("General");
-        DirectoryInfo sourceDir_general = new DirectoryInfo(sourcePath_general);
-        BuildFileExt.CopyAllTo(sourceDir_general, targetDir);
-
-        // Copy specific files
-        string sourcePath = GetIncludePath("Files_001");
-        DirectoryInfo sourceDir = new DirectoryInfo(sourcePath);        
-        BuildFileExt.CopyAllTo(sourceDir, targetDir);
-
-    }
-    */
 
     [MenuItem("BuildUtility/Build_002_Load")]
-    public static void LoadAppInfo_Build_002()
+    static void Build_002()
     {
         ClearConsole();
 
@@ -87,11 +51,11 @@ public class BuildUtility {
         AppInfo.UpdateBuildDateAndCountFromFile(appInfoDataPath);    
 
         // Open the build utility window
-        BuildUtilWindow.Instance.Init("", GetIncludePath(AppInfo.productName + "/Changelog.txt"));
+        BuildUtilWindow.Instance.Init("", GetChangelogPath());
 
     }
 
-    public static void Build_002()
+    public static void m_Build_002()
     {
         //string buildName = "Game_002" + "_" + AppInfo.buildDateAndCount;
         string buildName = AppInfo.productName + "_" + AppInfo.buildDateAndCount;
@@ -104,7 +68,7 @@ public class BuildUtility {
         BuildPipeline.BuildPlayer(scenes, destinationPath + "/" + buildName + ".exe", BuildTarget.StandaloneWindows64, BuildOptions.ShowBuiltPlayer);
 
         // Overwrite the file to update buildCount!
-        AppInfo.UpdateAppInfoData(GetAppInfoDataPath(AppInfo.productName));
+        AppInfo.OverwriteBuildDateAndCountToFile(GetAppInfoDataPath(AppInfo.productName));
 
         // Find target directory to copy files into it
         DirectoryInfo targetDir = new DirectoryInfo(destinationPath + "/" + buildName + "_Data" + "/StreamingAssets");

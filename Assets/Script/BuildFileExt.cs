@@ -73,7 +73,7 @@ public static class BuildFileExt {
         }
     }
 
-    public static void EditChangelog(string _filePath, string _buildDateAndCount, string _newChangelog)
+    public static void EditChangelog(string _filePath, string _newChangelog)
     {
         if (!File.Exists(_filePath))
         {
@@ -83,9 +83,10 @@ public static class BuildFileExt {
         // Read old changelog texts
         StringBuilder builder = new StringBuilder();
         List<string> originalTexts = File.ReadAllLines(_filePath).ToList();
-      
+
         // Add new changelog texts
-        builder.AppendLine(_buildDateAndCount);
+        builder.Append(AppInfo.currentDateTimeString);
+        builder.AppendLine("  [" + AppInfo.productName + "_" + AppInfo.buildDateAndCount + "]");
         builder.AppendLine(_newChangelog);
 
         builder.AppendLine("==============================================");

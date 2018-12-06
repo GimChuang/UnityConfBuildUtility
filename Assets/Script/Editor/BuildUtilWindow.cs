@@ -50,8 +50,8 @@ public class BuildUtilWindow : EditorWindow {
             if (changeLogString == "")
                 return;
 
-            BuildFileExt.EditChangelog(changelogPath, AppInfo.buildDateAndCount, changeLogString);
-            BuildUtility.Build_002();
+            BuildFileExt.EditChangelog(changelogPath, changeLogString);
+            BuildUtility.m_Build_002();
             this.Close();
         }
     }

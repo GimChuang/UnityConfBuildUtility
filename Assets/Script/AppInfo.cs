@@ -16,7 +16,8 @@ public static class AppInfo {
     static int buildCount;
     public static string buildDateAndCount;
 
-    static string currentDateString;
+    public static string currentDateString;
+    public static string currentDateTimeString;
 
     public static void SetUp(string _companyName, string _productName, bool _bDisplayResolutionDialog, bool _bForceSingleInstance)
     {
@@ -25,9 +26,9 @@ public static class AppInfo {
         bDisplayResolutionDialog = _bDisplayResolutionDialog;
         bForceSingleInstance = _bForceSingleInstance;
 
-        //currentDateString = string.Format("{0:yyMMdd}", System.DateTime.Now);
         currentDateString = System.DateTime.Now.ToString("yyyy-MM-dd");
-      
+        currentDateTimeString = System.DateTime.Now.ToString("yyyy-MM-dd_HH:mm:ss");
+
     }
  
     public static void UpdateBuildDateAndCountFromFile(string _appInfoDataPath)
@@ -84,7 +85,7 @@ public static class AppInfo {
         }
     }
 
-    public static void UpdateAppInfoData(string _appInfoDataPath)
+    public static void OverwriteBuildDateAndCountToFile(string _appInfoDataPath)
     {
         try
         {
@@ -108,7 +109,6 @@ public class AppInfoData
 {
     public string buildDate;
     public int buildCount;
-
 
 }
 
