@@ -23,10 +23,10 @@ new versions due to some changes or quick fixes for the game, when I become flus
 
 How to Use
 ---
-1. The code requires "Builds" and "FilesToInclude" folder in your project folder to work (as the picture shows).
-<img src="https://github.com/GimChuang/UnityConfBuildUtility/blob/master/readme_information/BuildUtility_folder.png">
 
-  You have to prepare the Json files for each computer, and place them in the right folders.  (In the example, files for the first computer goes to FilesToInclude/MyAwesomeGame_PC01, files for the second computer goes to FilesToInclude/MyAwesomeGame_PC02. There is also a folder "FilesToInclude/General", which contains files that all the computers need)
+![image](https://github.com/GimChuang/UnityConfBuildUtility/blob/master/readme_information/BuildUtility_folder.png)
+
+1. The code requires "Builds" and "FilesToInclude" folder in your project folder to work (as the above picture shows). You have to prepare the Json files for each computer, and place them in the right folders.  (In the example, files for the first computer goes to FilesToInclude/MyAwesomeGame_PC01, files for the second computer goes to FilesToInclude/MyAwesomeGame_PC02. There is also a folder "FilesToInclude/General", which contains files that all the computers need) 
   
 2. In Unity, click"BuildUtility" from the menu bar, and you'll see "Build_MyAwesomeGame_PC01" and "Build_MyAwesomeGame_PC02". Click one to build game for the corresponding computer.
 
