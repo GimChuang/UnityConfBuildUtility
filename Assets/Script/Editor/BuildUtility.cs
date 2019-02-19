@@ -31,13 +31,14 @@ public class BuildUtility {
         return projectPath + "/FilesToInclude/General/Changelog.txt";
     }
 
-    [MenuItem("BuildUtility/Build_002_Load")]
-    static void Build_002()
+    [MenuItem("BuildUtility/Build_Scene002")]
+    static void Build_Scene002()
     {
         ClearConsole();
 
         // Set PlayerSettings with AppInfo
-        AppInfo.SetUp("MyCompany", "MyAwesomeGame", true, true);   
+        string[] scenes = { "Assets/Scene/MyScene_002.unity" };
+        AppInfo.SetUp("MyCompany", "MyAwesomeGame_Scene002", true, true, scenes);   
         PlayerSettings.companyName = AppInfo.companyName;
         PlayerSettings.productName = AppInfo.productName;
         if (AppInfo.bDisplayResolutionDialog)
@@ -55,7 +56,33 @@ public class BuildUtility {
 
     }
 
-    public static void m_Build_002()
+    [MenuItem("BuildUtility/Build_Scene001")]
+    static void Build_Scene001()
+    {
+        ClearConsole();
+
+        // Set PlayerSettings with AppInfo
+        string[] scenes = { "Assets/Scene/MyScene_001.unity" };
+        AppInfo.SetUp("MyCompany", "MyAwesomeGame_Scene001", true, true, scenes);
+        PlayerSettings.companyName = AppInfo.companyName;
+        PlayerSettings.productName = AppInfo.productName;
+        if (AppInfo.bDisplayResolutionDialog)
+            PlayerSettings.displayResolutionDialog = ResolutionDialogSetting.Enabled;
+        else
+            PlayerSettings.displayResolutionDialog = ResolutionDialogSetting.HiddenByDefault;
+        PlayerSettings.forceSingleInstance = AppInfo.bForceSingleInstance;
+
+        // Load data from json to set the buildDate and buildCount
+        string appInfoDataPath = GetIncludePath(AppInfo.productName + "/AppInfoData.json");
+        AppInfo.UpdateBuildDateAndCountFromFile(appInfoDataPath);
+
+        // Open the build utility window
+        BuildUtilWindow.Instance.Init("", GetChangelogPath());
+
+    }
+
+    // Called when we press "build" button in the Build Utility window
+    public static void m_Build()
     {
         //string buildName = "Game_002" + "_" + AppInfo.buildDateAndCount;
         string buildName = AppInfo.productName + "_" + AppInfo.buildDateAndCount;
@@ -64,8 +91,9 @@ public class BuildUtility {
         CreateDirectoryForBuild(destinationPath);
 
         // Type required scenes here!
-        string[] scenes = { "Assets/Scene/MyScene_002.unity" };
-        BuildPipeline.BuildPlayer(scenes, destinationPath + "/" + buildName + ".exe", BuildTarget.StandaloneWindows64, BuildOptions.ShowBuiltPlayer);
+        //string[] scenes = { "Assets/Scene/MyScene_002.unity" };
+        //BuildPipeline.BuildPlayer(scenes, destinationPath + "/" + buildName + ".exe", BuildTarget.StandaloneWindows64, BuildOptions.ShowBuiltPlayer);
+        BuildPipeline.BuildPlayer(AppInfo.scenes, destinationPath + "/" + buildName + ".exe", BuildTarget.StandaloneWindows64, BuildOptions.ShowBuiltPlayer);
 
         // Overwrite the file to update buildCount!
         AppInfo.OverwriteBuildDateAndCountToFile(GetAppInfoDataPath(AppInfo.productName));

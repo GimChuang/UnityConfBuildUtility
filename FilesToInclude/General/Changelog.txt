@@ -1,3 +1,12 @@
+2019-02-19_17:42:44  [MyAwesomeGame_Scene001_2019-02-19_002]
+Test Build Scene001
+==============================================
+2019-02-19_17:42:09  [MyAwesomeGame_Scene002_2019-02-19_002]
+Test Build Scene002
+==============================================
+2019-02-19_17:31:24  [MyAwesomeGame_2019-02-19_001]
+- Modified: Tou can assign scene name when calling AppInfo.SetUp
+==============================================
 2018-12-06_11:19:37  [MyAwesomeGame_2018-12-06_002]
 - Hello
 - Ya

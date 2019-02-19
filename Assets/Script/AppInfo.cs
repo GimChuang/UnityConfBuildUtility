@@ -11,6 +11,7 @@ public static class AppInfo {
     public static string productName;
     public static bool bDisplayResolutionDialog;
     public static bool bForceSingleInstance;
+    public static string[] scenes;
 
     static string buildDate;
     static int buildCount;
@@ -19,12 +20,13 @@ public static class AppInfo {
     public static string currentDateString;
     public static string currentDateTimeString;
 
-    public static void SetUp(string _companyName, string _productName, bool _bDisplayResolutionDialog, bool _bForceSingleInstance)
+    public static void SetUp(string _companyName, string _productName, bool _bDisplayResolutionDialog, bool _bForceSingleInstance, string[] _scenes)
     {
         companyName = _companyName;
         productName = _productName;
         bDisplayResolutionDialog = _bDisplayResolutionDialog;
         bForceSingleInstance = _bForceSingleInstance;
+        scenes = _scenes;
 
         currentDateString = System.DateTime.Now.ToString("yyyy-MM-dd");
         currentDateTimeString = System.DateTime.Now.ToString("yyyy-MM-dd_HH:mm:ss");

@@ -51,7 +51,7 @@ public class BuildUtilWindow : EditorWindow {
                 return;
 
             BuildFileExt.EditChangelog(changelogPath, changeLogString);
-            BuildUtility.m_Build_002();
+            BuildUtility.m_Build();
             this.Close();
         }
     }
