@@ -55,4 +55,4 @@ To Do
 
 Acknowledgement
 ---
-This project is heavility influenced by [Michael Carriere's ZapdotBuildTools](http://www.rebz.org/2013/10/under-the-hood-building-a-build-pipeline/).
+This project is heavilily influenced by [Michael Carriere's ZapdotBuildTools](http://www.rebz.org/2013/10/under-the-hood-building-a-build-pipeline/).
