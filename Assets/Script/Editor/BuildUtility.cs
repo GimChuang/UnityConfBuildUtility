@@ -31,14 +31,14 @@ public class BuildUtility {
         return projectPath + "/FilesToInclude/General/Changelog.txt";
     }
 
-    [MenuItem("BuildUtility/Build_Scene002")]
-    static void Build_Scene002()
+    [MenuItem("BuildUtility/Build_PC02")]
+    static void Build_PC02()
     {
         ClearConsole();
 
         // Set PlayerSettings with AppInfo
         string[] scenes = { "Assets/Scene/MyScene_002.unity" };
-        AppInfo.SetUp("MyCompany", "MyAwesomeGame_Scene002", true, true, scenes);   
+        AppInfo.SetUp("MyCompany", "MyAwesomeGame_PC02", true, true, scenes);   
         PlayerSettings.companyName = AppInfo.companyName;
         PlayerSettings.productName = AppInfo.productName;
         if (AppInfo.bDisplayResolutionDialog)
@@ -56,14 +56,14 @@ public class BuildUtility {
 
     }
 
-    [MenuItem("BuildUtility/Build_Scene001")]
-    static void Build_Scene001()
+    [MenuItem("BuildUtility/Build_PC01")]
+    static void Build_PC01()
     {
         ClearConsole();
 
         // Set PlayerSettings with AppInfo
         string[] scenes = { "Assets/Scene/MyScene_001.unity" };
-        AppInfo.SetUp("MyCompany", "MyAwesomeGame_Scene001", true, true, scenes);
+        AppInfo.SetUp("MyCompany", "MyAwesomeGame_PC01", true, true, scenes);
         PlayerSettings.companyName = AppInfo.companyName;
         PlayerSettings.productName = AppInfo.productName;
         if (AppInfo.bDisplayResolutionDialog)
